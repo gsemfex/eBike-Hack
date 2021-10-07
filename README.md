@@ -5,7 +5,7 @@ Do not test or use in public areas, i am not responsible for any damages to you,
 Code was done 2016/2017, translation of comments in 2021
 
 To use this modification:\
--get microcontroller, i used Arduino\
+-get microcontroller, i used Arduino Micro\
 -upload code to controller\
 -take out bike battery\
 -find cables of the sensor and the bike computer\
