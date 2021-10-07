@@ -6,7 +6,7 @@ long timer = 0;             // time when reed sensor gives signal
 int diff = 0;               // difference of last two reed signals
 boolean counter = false;    // true => give signal to control unit, false => dont give signal to control
 boolean hyst = false;       // true => was fast before and went not slower than lower limit ("Speedmode active") 
-			//false = was not fast before or went slower than lower limit("Speedmode not active")
+			//false => was not fast before or went slower than lower limit("Speedmode not active")
 int sum = 0;                //counter for every signal that was skipped
 
 void setup() {
@@ -45,29 +45,26 @@ void loop() {
     digitalWrite(digitalOutPin, HIGH);    
     delay(1);                             
     digitalWrite(digitalOutPin, LOW);     
-    //delay(50);
     hyst = false;
   }
 
   else if (310 >= diff && diff >= 250) {  // loop active when riding between 25km/h and 30km/h
-    //Serial.println("mittelbereich");
+    //Serial.println("25-30");
     if (hyst == false) {                  // depending on "history" of ride, here Speedmode is not active
       //Serial.println("25-30, not been fast before");
       digitalWrite(digitalOutPin, HIGH);
       delay(1);
       digitalWrite(digitalOutPin, LOW);
-      //delay (50);
     }
 
     else {                                // Speedmode active
-      //Serial.println("25-30, hack active");
+      //Serial.println("25-30, speedmode active");
 
       if (counter == true) {              // "pass" signal from reed sensor to control unit
         //Serial.println("pass");
         digitalWrite(digitalOutPin, HIGH);
         delay(1);
         digitalWrite(digitalOutPin, LOW);
-        //delay(50);
         counter = false;
       }
 
@@ -77,7 +74,6 @@ void loop() {
         counter = true;                   // change so next time signal will be passed
         sum ++;                           // count each "not pass", to output "lost" signals later when bike is in standstill
         //Serial.println("25-30 sum");
-        //delay (50);
       }
     }
   }
@@ -90,7 +86,6 @@ void loop() {
       digitalWrite(digitalOutPin, HIGH);
       delay(1);
       digitalWrite(digitalOutPin, LOW);
-      //delay(50);
       counter = false;
     }
 
@@ -99,7 +94,6 @@ void loop() {
       counter = true;
       sum ++;
       //Serial.println("30+ sum");
-      //delay (50);
     }
     hyst = true;                          // set, so when going 25-30, speedmode is active
   }
