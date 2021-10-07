@@ -1,6 +1,6 @@
 # eBike-Hack
 For my 2016 Haibike SDURO Trekking 5.0 500Wh\
-Allows to have motor support up to 50Km/h (in theorie)\
+Allows to have motor support up to 50km/h (in theorie)\
 Do not test in public areas, i am not responsible for any damages to you, your bike or others
 
 To use this modification:\
@@ -8,7 +8,7 @@ To use this modification:\
 -upload code to controller\
 -take out bike battery\
 -find cables of the sensor and the bike computer\
--find power supply for the controller
+-find power supply for the controller\
 -connect cables from sensor to input and ground + put high resistance between input and ground\
 -connect cables from bike computer to output and ground\
 -connect power supply to microcontroller\
