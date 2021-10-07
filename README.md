@@ -1,8 +1,8 @@
 # eBike-Hack
-For my 2016 Haibike SDURO Trekking 5.0 500Wh\
+For my 2017 Haibike SDURO Trekking 5.0 500Wh\
 Allows to have motor support up to 50km/h (in theorie)\
 Do not test or use in public areas, i am not responsible for any damages to you, your bike or others\
-Code was done 2016/2017, translation of comments in 2021
+Code was done 2017/2018, translation of comments in 2021
 
 To use this modification:\
 -get microcontroller, i used Arduino Micro\
