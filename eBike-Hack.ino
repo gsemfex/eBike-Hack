@@ -1,7 +1,5 @@
-
 const int analogInPin = A1;  // analog input pin the reed sensor is attached to
 const int digitalOutPin = 8; // pin giving signal to bike control unit
-
 int sensorValue = 0;        // value read from the potentiometer
 int outputValue = 0;        // value output to bike control unit (PWM, analog out)
 long timer = 0;             // time when reed sensor gives signal
@@ -11,13 +9,11 @@ boolean hyst = false;       // true => was fast before and went not slower than 
 			//false = was not fast before or went slower than lower limit("Speedmode not active")
 int sum = 0;                //counter for every signal that was skipped
 
-
 void setup() {
   Serial.begin(9600);		// initialize serial communications at 9600 bps:
 }
 
 void loop() {
-
   pinMode(digitalOutPin, OUTPUT);         // set pin as output
 
   while (analogRead(analogInPin) > 512) { // wait until reed sensor gives signal 
@@ -27,10 +23,9 @@ void loop() {
   //Serial.println(timer);
 
   while (analogRead(analogInPin) < 512) { // wait until reed sensor gives second signal
-    //Serial.println(millis());
+  //Serial.println(millis());
 
     if (millis()-timer > 8000) {               //enter in case long time between signals => bike is not moving
-
       for (int i = 0; i < sum; i++) {     //output signals fast that were not given to control unit during riding
         digitalWrite(digitalOutPin, HIGH); //standard on - wait - off of signal to bike control unit
         delay(1);
@@ -56,7 +51,6 @@ void loop() {
 
   else if (310 >= diff && diff >= 250) {  // loop active when riding between 25km/h and 30km/h
     //Serial.println("mittelbereich");
-
     if (hyst == false) {                  // depending on "history" of ride, here Speedmode is not active
       //Serial.println("25-30, not been fast before");
       digitalWrite(digitalOutPin, HIGH);
@@ -74,7 +68,6 @@ void loop() {
         delay(1);
         digitalWrite(digitalOutPin, LOW);
         //delay(50);
-        
         counter = false;
       }
 
@@ -111,6 +104,4 @@ void loop() {
     hyst = true;                          // set, so when going 25-30, speedmode is active
   }
   //Serial.println(sum);
-
 }
-
